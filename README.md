@@ -24,21 +24,21 @@
 
 <br />
 <p align="center">
-  <a href="https://github.com/codedesignplus/CodeDesignPlus.Core/README">
+  <a href="https://github.com/codedesignplus/CodeDesignPlus.Event.Bus/README">
     <img src="logo.png" alt="Logo">
   </a>
 
-  <h3 align="center">CodeDesignPlus.EFCore</h3>
+  <h3 align="center">CodeDesignPlus.Event.Bus</h3>
 
   <p align="center">
-    Librería que contiene servicios base para la implementación del patrón repositorio sobre Entity Framework.
+    Librería que contiene servicios base para la implementación del patrón publish/subscribe.
     <br />
-    <a href="https://github.com/codedesignplus/CodeDesignPlus.EFCore/README"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/codedesignplus/CodeDesignPlus.Event.Bus/README"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/codedesignplus/CodeDesignPlus.EFCore/issues">Report Bug</a>
+    <a href="https://github.com/codedesignplus/CodeDesignPlus.Event.Bus/issues">Report Bug</a>
     ·
-    <a href="https://github.com/codedesignplus/CodeDesignPlus.EFCore/issues">Request Feature</a>
+    <a href="https://github.com/codedesignplus/CodeDesignPlus.Event.Bus/issues">Request Feature</a>
   </p>
 </p>
 
@@ -65,14 +65,14 @@
 ## About The Project
 
 <p align="center">
-    <img src="doc/images/CodeDesignPlus.EFCore.png" alt="Logo">
+    <img src="doc/images/CodeDesignPlus.Event.Bus.png" alt="Logo">
 </p>
 
 Este proyecto tiene como objetivo proveer las interfaces, servicios, middleware, opciones y métodos 
-de extensión para la implementación del patrón repositorio en sus proyectos Web, Api, Desktop 
+de extensión para la implementación del patrón publish/subscribe en sus proyectos Web, Api, Desktop 
 desarrollados en .Net Core.
 
-De igual forma esta librería es usada para la implementación de la característica Storage que se desarrollara en el Microservicio Template como se evidencia en la siguiente imagen:
+De igual forma esta librería es usada para la implementación de la característica Publish/Subscribe que se desarrollara en el Microservicio Template como se evidencia en la siguiente imagen:
 
 <p align="center">
     <img src="doc/images/Microservice.Features.png" alt="Logo">
@@ -84,18 +84,15 @@ Toda la información del desarrollo de la librería la encontrar disponible en el 
 https://www.youtube.com/playlist?list=PLiNuKK_lURW83zP828ACAHev-RZWOop-3
 
 *Librería CodeDesignPlus.Core* <br>
-1. [Introducción](https://youtu.be/wwckEU5wtT4)
-2. [RepositoryBase](https://youtu.be/nxM_FKbGtzM)
-3. [Repository Patter](https://youtu.be/ydi-0MrQO80)
-4. [Unit Test - Repository Patter](https://youtu.be/XkX9DNoRULM)
-5. [OperationBase](https://youtu.be/gj5iA3Z-MAw)
-6. [Unit Test - OperationBase](https://youtu.be/5jXx4-2vnaI)
-7. [Method Extensions](https://youtu.be/vSa7-4rZGN4)
-8. [Unit Test - Method Extensions]()
+1. [Introducción](https://youtu.be/z2KgqupxqhE)
+2. [Abstracciones, Exceptions](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
+3. [Service](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
+4. [Methods Extensions](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
+5. [Unit Test](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
 
 ### Built With
 
-* [.Net Core 3.1](https://dotnet.microsoft.com/download)
+* [.Net 5](https://dotnet.microsoft.com/download)
 
 
 
@@ -108,7 +105,7 @@ Para obtener una copia local en funcionamiento siga los siguientes pasos:
 2. Para abrir el proyecto
     <ul>
         <li>Descargue e instale la versión de <a target="_blank" href="https://www.youtube.com/watch?v=U9vh-v1buyc&list=PLiNuKK_lURW8-Nmp8rZNPI2-bs94vzKCj&index=9">Visual Studio Community 2019</a></li>
-        <li>Doble click en el archivo <strong>CodeDesignPlus.EFCore.sln</strong></li>
+        <li>Doble click en el archivo <strong>CodeDesignPlus.Event.Bus.sln</strong></li>
     </ul>
 
 ### Prerequisites
@@ -117,49 +114,36 @@ Para restaurar los paquetes nuget puede ejecutar el siguiente comando solo si no
 
 * powershell
 ```powershell
-dotnet restore .\CodeDesignPlus.EFCore.sln
+dotnet restore .\CodeDesignPlus.Event.Bus.sln
 ```
 
 ### Installation
 
 1. Clone the repo
 ```powershell
-git clone https://github.com/codedesignplus/CodeDesignPlus.EFCore.git
+git clone https://github.com/codedesignplus/CodeDesignPlus.Event.Bus.git
 ```
 2. Retore Packages
 ```powershell
-dotnet restore .\CodeDesignPlus.EFCore.sln
+dotnet restore .\CodeDesignPlus.Event.Bus.sln
 ```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Esta es una guía practica que lo llevara por una serie de pasos para la implementación de CodeDesignPlus.EFCore en su proyecto .Net Core (Web - Api).
+Esta es una guía practica que lo llevara por una serie de pasos para la implementación de CodeDesignPlus.Event.Bus en su proyecto .Net Core (Web - Api).
 
-* [Creando un proyecto API (Proyecto, Librerías y Paquetes Nuget)](https://github.com/codedesignplus/CodeDesignPlus.EFCore/wiki/01.-Creando-API)
-* [Creando Librerías](https://github.com/codedesignplus/CodeDesignPlus.EFCore/wiki/02.-Creando-Librer%C3%ADas)
-* [Instalación de Paquetes Nuget](https://github.com/codedesignplus/CodeDesignPlus.EFCore/wiki/03.-Instalaci%C3%B3n-de-Paquetes-Nuget)
-* [Dependencias del Proyecto](https://github.com/codedesignplus/CodeDesignPlus.EFCore/wiki/04.-Dependencias-de-Proyectos)
-* [Entities](https://github.com/codedesignplus/CodeDesignPlus.EFCore/wiki/05.-Entidades)
-* [Abstractions](https://github.com/codedesignplus/CodeDesignPlus.EFCore/wiki/06.-Abstractions)
-* [EntityTypeConfiguration](https://github.com/codedesignplus/CodeDesignPlus.EFCore/wiki/07.-EntityTypeConfiguration)
-* [Repositories](https://github.com/codedesignplus/CodeDesignPlus.EFCore/wiki/08.-Repositories)
-* [DbContext](https://github.com/codedesignplus/CodeDesignPlus.EFCore/wiki/09.-DbContext)
-* [Startup](https://github.com/codedesignplus/CodeDesignPlus.EFCore/wiki/10.-Startup)
-* [Controller](https://github.com/codedesignplus/CodeDesignPlus.EFCore/wiki/11.-Controller)
+* "En Proceso"
 
-Este ejemplo con es desarrollado con [Visual Studio Comumnity](#getting-started), sin embargo usted es libre de usar la línea de comandos de dotnet para la creación de la solución, proyectos e instalación de paquetes nuget.
+Este ejemplo es desarrollado con [Visual Studio Comumnity](#getting-started), sin embargo usted es libre de usar la línea de comandos de dotnet para la creación de la solución, proyectos e instalación de paquetes nuget.
 
 Para un detalle completo lo invitamos a ver los videos de la creación de la librería:
 
-1. [Introducción](https://youtu.be/wwckEU5wtT4)
-2. [RepositoryBase](https://youtu.be/nxM_FKbGtzM)
-3. [Repository Patter](https://youtu.be/ydi-0MrQO80)
-4. [Unit Test - Repository Patter](https://youtu.be/XkX9DNoRULM)
-5. [OperationBase](https://youtu.be/gj5iA3Z-MAw)
-6. [Unit Test - OperationBase](https://youtu.be/5jXx4-2vnaI)
-7. [Method Extensions](https://youtu.be/vSa7-4rZGN4)
-8. [Unit Test - Method Extensions](https://youtu.be/PQvVmpNsxfg)
+1. [Introducción](https://youtu.be/z2KgqupxqhE)
+2. [Abstracciones, Exceptions](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
+3. [Service](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
+4. [Methods Extensions](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
+5. [Unit Test](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
 
 <!-- ROADMAP -->
 ## Roadmap

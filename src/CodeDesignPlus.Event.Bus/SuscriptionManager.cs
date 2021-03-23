@@ -12,7 +12,7 @@ namespace CodeDesignPlus.Event.Bus
         /// <summary>
         /// Relationship between the event name and its multiple handlers
         /// </summary>
-        private readonly Dictionary<string, List<Suscription>> handlers = new Dictionary<string, List<Suscription>>();
+        private readonly Dictionary<string, List<Subscription>> handlers = new Dictionary<string, List<Subscription>>();
 
         /// <summary>
         /// Determines whether a sequence contains any elements.
@@ -22,7 +22,7 @@ namespace CodeDesignPlus.Event.Bus
         /// <summary>
         /// An event fired if an event has removed
         /// </summary>
-        public event EventHandler<Suscription> OnEventRemoved;
+        public event EventHandler<Subscription> OnEventRemoved;
 
         /// <summary>
         /// Gets the name of the event from TEvent
@@ -44,12 +44,12 @@ namespace CodeDesignPlus.Event.Bus
             var eventName = this.GetEventKey<TEvent>();
 
             if (!this.HasSubscriptionsForEvent<TEvent>())
-                this.handlers.Add(eventName, new List<Suscription>());
+                this.handlers.Add(eventName, new List<Subscription>());
 
             if (this.handlers[eventName].Any(x => x.EventHandlerType == typeof(TEventHandler)))
                 throw new EventHandlerAlreadyRegisteredException<TEvent, TEventHandler>();
 
-            this.handlers[eventName].Add(Suscription.Create<TEvent, TEventHandler>());
+            this.handlers[eventName].Add(Subscription.Create<TEvent, TEventHandler>());
         }
 
         /// <summary>
@@ -96,12 +96,9 @@ namespace CodeDesignPlus.Event.Bus
         /// <exception cref="ArgumentNullException">El nombre del evento no es valido </exception>
         /// <exception cref="EventNotExistException">El evento especificado no se encuentra registrado</exception>
         /// <returns>Retorna la información de la suscripción de un evento</returns>
-        public IEnumerable<Suscription> GetHandlers<TEvent>() where TEvent : EventBase
+        public IEnumerable<Subscription> GetHandlers<TEvent>() where TEvent : EventBase
         {
-            var eventName = this.GetEventKey<TEvent>();
-
-            if (string.IsNullOrEmpty(eventName))
-                throw new ArgumentNullException(nameof(eventName));
+            var eventName = this.GetEventKey<TEvent>(); 
 
             if (!this.handlers.ContainsKey(eventName))
                 throw new EventIsNotRegisteredException();
@@ -115,7 +112,7 @@ namespace CodeDesignPlus.Event.Bus
         /// <typeparam name="TEvent">Tipo del Evento a buscar</typeparam>
         /// <typeparam name="TEventHandler">Tipo del manejador de eventos a buscar</typeparam>
         /// <returns>Retorna la información con la que se suscribió el evento, en caso de no encontrar el evento, este retornara null</returns>
-        public Suscription FindSubscription<TEvent, TEventHandler>()
+        public Subscription FindSubscription<TEvent, TEventHandler>()
             where TEvent : EventBase
             where TEventHandler : IEventHandler<TEvent>
         {
@@ -133,7 +130,7 @@ namespace CodeDesignPlus.Event.Bus
         /// <typeparam name="TEvent">Tipo del Evento a buscar</typeparam>
         /// <typeparam name="TEventHandler">Tipo del manejador de eventos a buscar</typeparam>
         /// <returns>Retorna la información con la que se suscribió el evento, en caso de no encontrar el evento, este retornara null</returns>
-        public List<Suscription> FindSubscriptions<TEvent>()
+        public List<Subscription> FindSubscriptions<TEvent>()
             where TEvent : EventBase
         {
             var eventName = this.GetEventKey<TEvent>();

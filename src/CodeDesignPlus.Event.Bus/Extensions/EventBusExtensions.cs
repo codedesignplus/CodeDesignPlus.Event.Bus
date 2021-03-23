@@ -3,6 +3,7 @@ using CodeDesignPlus.Event.Bus.Abstractions;
 using CodeDesignPlus.Event.Bus.Internal.EventBusBackgroundService;
 using CodeDesignPlus.Event.Bus.Internal.Queue;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Linq;
 using System.Reflection;
 
@@ -14,14 +15,17 @@ namespace CodeDesignPlus.Event.Bus.Extensions
     public static class EventBusExtensions
     {
         /// <summary>
-        /// Adds the services of the event bus
+        /// Adds the services of the type <see cref="IEventBus"/> and <see cref="ISuscriptionManager"/>
         /// </summary>
-        /// <typeparam name="TStartupLogic">Implementation of the IStartupServices type</typeparam>
         /// <param name="services">The Microsoft.Extensions.DependencyInjection.IServiceCollection to add the service to.</param>
         /// <returns>A reference to this instance after the operation has completed.</returns>
-        public static IServiceCollection AddEventBus<TStartupLogic>(this IServiceCollection services)
+        public static IServiceCollection AddEventBus(this IServiceCollection services)
         {
             services.AddSingleton<ISuscriptionManager, SuscriptionManager>();
+
+            var eventBus = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes()).FirstOrDefault(x => typeof(IEventBus).IsAssignableFrom(x));
+
+            services.AddSingleton(typeof(IEventBus), eventBus);
 
             return services;
         }
@@ -56,7 +60,7 @@ namespace CodeDesignPlus.Event.Bus.Extensions
             foreach (var eventHandler in eventsHandlers)
             {
                 var interfaceEventHandlerGeneric = eventHandler.GetInterfaces().FirstOrDefault(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IEventHandler<>));
-                var eventType = interfaceEventHandlerGeneric.GetGenericArguments().FirstOrDefault(x => x.IsClass && !x.IsAbstract && !x.IsSubclassOf(typeof(EventBase)));
+                var eventType = interfaceEventHandlerGeneric?.GetGenericArguments().FirstOrDefault(x => x.IsClass && !x.IsAbstract && !x.IsSubclassOf(typeof(EventBase)));
 
                 if (interfaceEventHandlerGeneric != null && eventType != null)
                 {

@@ -1,6 +1,7 @@
 ﻿using CodeDesignPlus.Event.Bus.Abstractions;
 using System;
 using System.Collections.Concurrent;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -29,6 +30,7 @@ namespace CodeDesignPlus.Event.Bus.Internal.Queue
         /// <summary>
         /// Crea una nueva instancia de <see cref="QueueService{TEvent}"/>
         /// </summary>
+        /// <param name="eventHandler">Event Handler</param>
         public QueueService(TEventHandler eventHandler)
         {
             this.eventHandler = eventHandler;
@@ -44,7 +46,10 @@ namespace CodeDesignPlus.Event.Bus.Internal.Queue
             if (@event == null)
                 throw new ArgumentNullException(nameof(@event));
 
-            this.queueEvent.Enqueue(@event);
+            var exist = this.queueEvent.Any(x => x.Equals(@event));
+
+            if (!exist)
+                this.queueEvent.Enqueue(@event);
         }
 
 

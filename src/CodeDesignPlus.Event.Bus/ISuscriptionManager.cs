@@ -17,7 +17,7 @@ namespace CodeDesignPlus.Event.Bus
         /// <summary>
         /// An event fired if an event has removed
         /// </summary>
-        event EventHandler<Suscription> OnEventRemoved;
+        event EventHandler<Subscription> OnEventRemoved;
         /// <summary>
         /// Gets the name of the event from TEvent
         /// </summary>
@@ -55,14 +55,14 @@ namespace CodeDesignPlus.Event.Bus
         /// <exception cref="ArgumentNullException">El nombre del evento no es valido </exception>
         /// <exception cref="EventNotExistException">El evento especificado no se encuentra registrado</exception>
         /// <returns>Retorna la información de la suscripción de un evento</returns>
-        IEnumerable<Suscription> GetHandlers<TEvent>() where TEvent : EventBase;
+        IEnumerable<Subscription> GetHandlers<TEvent>() where TEvent : EventBase;
         /// <summary>
         /// Metodo encargado de buscar y retornar la información de la suscripción a partir del nombre y tipo del evento
         /// </summary>
         /// <typeparam name="TEvent">Tipo del Evento a buscar</typeparam>
         /// <typeparam name="TEventHandler">Tipo del manejador de eventos a buscar</typeparam>
         /// <returns>Retorna la información con la que se suscribió el evento, en caso de no encontrar el evento, este retornara null</returns>
-        Suscription FindSubscription<TEvent, TEventHandler>()
+        Subscription FindSubscription<TEvent, TEventHandler>()
             where TEvent : EventBase
             where TEventHandler : IEventHandler<TEvent>;
 
@@ -72,7 +72,7 @@ namespace CodeDesignPlus.Event.Bus
         /// <typeparam name="TEvent">Tipo del Evento a buscar</typeparam>
         /// <typeparam name="TEventHandler">Tipo del manejador de eventos a buscar</typeparam>
         /// <returns>Retorna la información con la que se suscribió el evento, en caso de no encontrar el evento, este retornara null</returns>
-        List<Suscription> FindSubscriptions<TEvent>()
+        List<Subscription> FindSubscriptions<TEvent>()
             where TEvent : EventBase;
 
         /// <summary>
