@@ -10,7 +10,7 @@ namespace CodeDesignPlus.Event.Bus.Internal.Queue
     /// </summary>
     /// <typeparam name="TEvent">Evento de Integración</typeparam>
     /// <typeparam name="TEventHandler">Manejador de eventos</typeparam>
-    public interface IQueueService<TEventHandler, TEvent>
+    public interface IQueueService<TEventHandler, in TEvent>
         where TEventHandler : IEventHandler<TEvent>
         where TEvent : EventBase
     {

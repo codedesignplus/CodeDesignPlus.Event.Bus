@@ -9,7 +9,7 @@ namespace CodeDesignPlus.Event.Bus.Internal.Queue
 {
 
     /// <summary>
-    /// Implementación por defecto para el servicio <see cref="IQueueService{TEvent}"/>
+    /// Implementación por defecto para el servicio <see cref="IQueueService{TEventHandler, TEvent}"/>
     /// </summary>
     /// <typeparam name="TEventHandler">Manejador de eventos</typeparam>
     /// <typeparam name="TEvent">Evento de Integración</typeparam>
@@ -35,6 +35,18 @@ namespace CodeDesignPlus.Event.Bus.Internal.Queue
         {
             this.eventHandler = eventHandler;
         }
+
+        /// <summary>
+        /// Gets the number of elements contained in the System.Collections.Concurrent.ConcurrentQueue`1.
+        /// </summary>
+        /// <returns>The number of elements contained in the System.Collections.Concurrent.ConcurrentQueue`1.</returns>
+        public int Count => this.queueEvent.Count;
+
+        /// <summary>
+        /// Determines whether a sequence contains any elements.
+        /// </summary>
+        /// <returns>true if the source sequence contains any elements; otherwise, false.</returns>
+        public bool Any() => this.queueEvent.Any();
 
         /// <summary>
         /// Agrega un objeto al final de la queue

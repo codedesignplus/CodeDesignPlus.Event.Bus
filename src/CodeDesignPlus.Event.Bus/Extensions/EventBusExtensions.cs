@@ -15,13 +15,13 @@ namespace CodeDesignPlus.Event.Bus.Extensions
     public static class EventBusExtensions
     {
         /// <summary>
-        /// Adds the services of the type <see cref="IEventBus"/> and <see cref="ISuscriptionManager"/>
+        /// Adds the services of the type <see cref="IEventBus"/> and <see cref="ISubscriptionManager"/>
         /// </summary>
         /// <param name="services">The Microsoft.Extensions.DependencyInjection.IServiceCollection to add the service to.</param>
         /// <returns>A reference to this instance after the operation has completed.</returns>
         public static IServiceCollection AddEventBus(this IServiceCollection services)
         {
-            services.AddSingleton<ISuscriptionManager, SuscriptionManager>();
+            services.AddSingleton<ISubscriptionManager, SubscriptionManager>();
 
             var eventBus = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes()).FirstOrDefault(x => typeof(IEventBus).IsAssignableFrom(x));
 

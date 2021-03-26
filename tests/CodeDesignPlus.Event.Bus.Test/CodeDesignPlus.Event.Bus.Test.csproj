@@ -19,4 +19,12 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CodeDesignPlus.Event.Bus\CodeDesignPlus.Event.Bus.csproj" />
+  </ItemGroup>
+
 </Project>

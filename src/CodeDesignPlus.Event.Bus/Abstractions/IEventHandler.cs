@@ -11,7 +11,7 @@ namespace CodeDesignPlus.Event.Bus.Abstractions
         where TEvent : EventBase
     {
         /// <summary>
-        /// Metodo que se ejecutara cuando se detecte un determinado evento
+        /// Invocado por el event bus cuando se detecta un evento al que se esta subscrito
         /// </summary>
         /// <param name="data">Información del evento</param>
         /// <param name="token">Cancellation Token</param>

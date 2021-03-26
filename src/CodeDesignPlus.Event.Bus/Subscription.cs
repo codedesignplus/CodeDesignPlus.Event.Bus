@@ -4,7 +4,7 @@ using System;
 namespace CodeDesignPlus.Event.Bus
 {
     /// <summary>
-    /// Información relacionada con el evento que se esta registrando en <see cref="SuscriptionManager"/>
+    /// Información relacionada con el evento que se esta registrando en <see cref="SubscriptionManager"/>
     /// </summary>
     public class Subscription
     {
@@ -35,7 +35,8 @@ namespace CodeDesignPlus.Event.Bus
         /// <summary>
         /// Metodo encargado de construir la información de un evento
         /// </summary>
-        /// <param name="eventHandlerType"><see cref="Type"/> del manejador de eventos</param>
+        /// <typeparam name="TEvent">Evento de Integración</typeparam>
+        /// <typeparam name="TEventHandler">Manejador de eventos</typeparam>
         /// <returns>Retorna la información del evento</returns>
         public static Subscription Create<TEvent, TEventHandler>() 
             where TEvent: EventBase 
