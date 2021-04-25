@@ -1,11 +1,9 @@
 ﻿using CodeDesignPlus.Event.Bus.Abstractions;
-using CodeDesignPlus.Event.Bus.Exceptions;
 using CodeDesignPlus.Event.Bus.Extensions;
 using CodeDesignPlus.Event.Bus.Internal.EventBusBackgroundService;
 using CodeDesignPlus.Event.Bus.Internal.Queue;
 using CodeDesignPlus.Event.Bus.Test.Helpers;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Linq;
 using Xunit;
 
@@ -53,18 +51,18 @@ namespace CodeDesignPlus.Event.Bus.Test.Extensions
             services.AddEventsHandlers<Startup>();
 
             // Assert
-            var handler = services.FirstOrDefault(x => 
-                x.ImplementationType.IsAssignableGenericFrom(typeof(IEventHandler<>)) && 
+            var handler = services.FirstOrDefault(x =>
+                x.ImplementationType.IsAssignableGenericFrom(typeof(IEventHandler<>)) &&
                 x.ImplementationType == typeof(UserEventHandler)
             );
 
-            var queue = services.FirstOrDefault(x => 
-                x.ImplementationType.IsAssignableGenericFrom(typeof(IQueueService<,>)) && 
+            var queue = services.FirstOrDefault(x =>
+                x.ImplementationType.IsAssignableGenericFrom(typeof(IQueueService<,>)) &&
                 x.ImplementationType == typeof(QueueService<UserEventHandler, UserCreatedEvent>)
             );
 
-            var hostService = services.FirstOrDefault(x => 
-                x.ImplementationType.IsAssignableGenericFrom(typeof(IEventBusBackgroundService<,,>)) && 
+            var hostService = services.FirstOrDefault(x =>
+                x.ImplementationType.IsAssignableGenericFrom(typeof(IEventBusBackgroundService<,,>)) &&
                 x.ImplementationType == typeof(EventBusBackgroundService<QueueService<UserEventHandler, UserCreatedEvent>, UserEventHandler, UserCreatedEvent>)
             );
 

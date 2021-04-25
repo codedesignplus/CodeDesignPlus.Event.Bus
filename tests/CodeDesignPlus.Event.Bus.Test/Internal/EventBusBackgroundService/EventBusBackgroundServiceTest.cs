@@ -1,11 +1,10 @@
-﻿using ES = CodeDesignPlus.Event.Bus.Internal.EventBusBackgroundService;
-using CodeDesignPlus.Event.Bus.Internal.Queue;
+﻿using CodeDesignPlus.Event.Bus.Internal.Queue;
 using CodeDesignPlus.Event.Bus.Test.Helpers;
 using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Xunit;
 using System.Linq;
+using System.Threading;
+using Xunit;
+using ES = CodeDesignPlus.Event.Bus.Internal.EventBusBackgroundService;
 
 namespace CodeDesignPlus.Event.Bus.Test.Internal.EventBusBackgroundService
 {

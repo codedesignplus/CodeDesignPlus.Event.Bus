@@ -19,7 +19,7 @@ namespace CodeDesignPlus.Event.Bus.Without.EventBusService.Test.Extensions
         {
             // Arrange
             var services = new ServiceCollection();
-            
+
             // Act & Assert
             Assert.Throws<EventNotImplementedException>(() => services.AddEventBus());
         }

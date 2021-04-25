@@ -10,7 +10,7 @@ namespace CodeDesignPlus.Event.Bus.Internal.EventBusBackgroundService
     /// <typeparam name="TEventHandler">Manejador de eventos</typeparam>
     /// <typeparam name="TEvent">Evento de Integración</typeparam>
     public interface IEventBusBackgroundService<TQueueService, TEventHandler, TEvent>
-        where TQueueService: IQueueService<TEventHandler, TEvent>
+        where TQueueService : IQueueService<TEventHandler, TEvent>
         where TEventHandler : IEventHandler<TEvent>
         where TEvent : EventBase
     {

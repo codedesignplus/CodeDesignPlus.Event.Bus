@@ -6,7 +6,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Helpers
     /// <summary>
     /// Evento de integración usado cuando es creado un usuarios
     /// </summary>
-    public class UserCreatedEvent: EventBase
+    public class UserCreatedEvent : EventBase
     {
         /// <summary>
         /// Crea una nueva instancia de <see cref="UserCreatedEvent"/>

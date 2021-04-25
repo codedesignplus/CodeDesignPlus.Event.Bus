@@ -7,7 +7,7 @@ namespace CodeDesignPlus.Event.Bus.Abstractions
     /// Interfaz base para implementar un manejador de eventos a partir de un evento definido
     /// </summary>
     /// <typeparam name="TEvent">Evento de Integración</typeparam>
-    public interface IEventHandler<in TEvent> 
+    public interface IEventHandler<in TEvent>
         where TEvent : EventBase
     {
         /// <summary>

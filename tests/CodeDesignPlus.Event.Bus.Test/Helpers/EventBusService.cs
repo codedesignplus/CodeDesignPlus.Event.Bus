@@ -68,7 +68,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Helpers
             where TEvent : EventBase
             where TEventHandler : IEventHandler<TEvent>
         {
-            
+
         }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using CodeDesignPlus.Event.Bus.Exceptions;
 using CodeDesignPlus.Event.Bus.Test.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace CodeDesignPlus.Event.Bus.Test

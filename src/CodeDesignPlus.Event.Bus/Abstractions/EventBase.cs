@@ -6,9 +6,9 @@ using System.Text.Json;
 namespace CodeDesignPlus.Event.Bus.Abstractions
 {
     /// <summary>
-    /// EventBase is used to create the events that will be published to the message broker
+    /// EventBase is used to create the events that will be published to the message broker 
     /// </summary>
-    public abstract class EventBase: IEquatable<EventBase>
+    public abstract class EventBase : IEquatable<EventBase>
     {
         /// <summary>
         /// Initializes a new instance of the CodeDesignPlus.Event.Bus.Abstractions.EventBase class

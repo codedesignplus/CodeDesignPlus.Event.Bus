@@ -8,7 +8,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Execptions
     /// <summary>
     /// Pruebas unitarias a la clase <see cref="EventBusException"/>
     /// </summary>
-    public class EventBusExceptionTest: ExceptionBaseTest
+    public class EventBusExceptionTest : ExceptionBaseTest
     {
         /// <summary>
         /// Valida el constructor por defecto de la excepción
@@ -76,7 +76,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Execptions
             var result = DeserializeFromBytes<EventBusException>(bytes);
 
             // Assert
-            Assert.True(bytes.Length > 0); 
+            Assert.True(bytes.Length > 0);
             Assert.NotNull(result.Message);
             Assert.NotNull(result.InnerException);
             Assert.Equal(innerException, exception.InnerException);

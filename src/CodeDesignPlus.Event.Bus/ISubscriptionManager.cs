@@ -1,7 +1,7 @@
 ﻿using CodeDesignPlus.Event.Bus.Abstractions;
+using CodeDesignPlus.Event.Bus.Exceptions;
 using System;
 using System.Collections.Generic;
-using CodeDesignPlus.Event.Bus.Exceptions;
 
 namespace CodeDesignPlus.Event.Bus
 {

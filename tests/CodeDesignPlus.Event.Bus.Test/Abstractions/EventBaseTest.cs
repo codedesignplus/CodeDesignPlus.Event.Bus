@@ -57,7 +57,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Abstractions
             //Assert
             Assert.True(eventBus.Id > 0);
             Assert.NotEmpty(eventBus.IdEvent.ToString());
-            Assert.Equal(eventBus.EventDate,  date);
+            Assert.Equal(eventBus.EventDate, date);
             Assert.Equal(nameof(UserCreatedEvent.Name), eventBus.Name);
             Assert.Equal(nameof(UserCreatedEvent.User), eventBus.User);
         }

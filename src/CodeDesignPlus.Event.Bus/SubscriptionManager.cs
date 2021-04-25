@@ -9,7 +9,7 @@ namespace CodeDesignPlus.Event.Bus
     /// <summary>
     /// Implementación por defecto del servicio <see cref="ISubscriptionManager"/>
     /// </summary>
-    public class SubscriptionManager: ISubscriptionManager
+    public class SubscriptionManager : ISubscriptionManager
     {
         /// <summary>
         /// Relationship between the event name and its multiple handlers
@@ -39,8 +39,8 @@ namespace CodeDesignPlus.Event.Bus
         /// <typeparam name="TEvent">The type of the event</typeparam>
         /// <typeparam name="TEventHandler">The type of the event handler</typeparam>
         /// <exception cref="EventHandlerAlreadyRegisteredException{TEvent, TEventHandler}"></exception>
-        public void AddSubscription<TEvent, TEventHandler>() 
-            where TEvent : EventBase 
+        public void AddSubscription<TEvent, TEventHandler>()
+            where TEvent : EventBase
             where TEventHandler : IEventHandler<TEvent>
         {
             var eventName = this.GetEventKey<TEvent>();
@@ -100,7 +100,7 @@ namespace CodeDesignPlus.Event.Bus
         /// <returns>Retorna la información de la suscripción de un evento</returns>
         public IEnumerable<Subscription> GetHandlers<TEvent>() where TEvent : EventBase
         {
-            var eventName = this.GetEventKey<TEvent>(); 
+            var eventName = this.GetEventKey<TEvent>();
 
             if (!this.handlers.ContainsKey(eventName))
                 throw new EventIsNotRegisteredException();

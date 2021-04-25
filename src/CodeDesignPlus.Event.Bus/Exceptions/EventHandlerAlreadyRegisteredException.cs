@@ -9,7 +9,7 @@ namespace CodeDesignPlus.Event.Bus.Exceptions
     /// </summary>
     [Serializable]
     public class EventHandlerAlreadyRegisteredException<TEvent, TEventHandler> : Exception
-            where TEvent : EventBase 
+            where TEvent : EventBase
             where TEventHandler : IEventHandler<TEvent>
     {
         /// <summary>
@@ -25,7 +25,7 @@ namespace CodeDesignPlus.Event.Bus.Exceptions
         /// <summary>
         /// Initializes a new instance of the EventHandlerAlreadyRegisteredException class.
         /// </summary>
-        public EventHandlerAlreadyRegisteredException(): 
+        public EventHandlerAlreadyRegisteredException() :
             base($"Handler Type {typeof(TEventHandler).Name} already registered for '{typeof(TEvent)}'")
         {
         }

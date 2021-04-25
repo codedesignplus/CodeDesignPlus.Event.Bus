@@ -9,7 +9,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Execptions
     /// <summary>
     /// Pruebas unitarias a la clase <see cref="EventHandlerAlreadyRegisteredException{TEvent, TEventHandler}"/>
     /// </summary>
-    public class EventHandlerAlreadyRegisteredExceptionTest: ExceptionBaseTest
+    public class EventHandlerAlreadyRegisteredExceptionTest : ExceptionBaseTest
     {
         /// <summary>
         /// Valida el constructor por defecto de la excepción

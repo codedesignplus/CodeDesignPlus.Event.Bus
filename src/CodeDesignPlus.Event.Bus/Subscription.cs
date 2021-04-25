@@ -38,9 +38,9 @@ namespace CodeDesignPlus.Event.Bus
         /// <typeparam name="TEvent">Evento de Integración</typeparam>
         /// <typeparam name="TEventHandler">Manejador de eventos</typeparam>
         /// <returns>Retorna la información del evento</returns>
-        public static Subscription Create<TEvent, TEventHandler>() 
-            where TEvent: EventBase 
-            where TEventHandler: IEventHandler<TEvent>
+        public static Subscription Create<TEvent, TEventHandler>()
+            where TEvent : EventBase
+            where TEventHandler : IEventHandler<TEvent>
         {
             return new Subscription(typeof(TEvent), typeof(TEventHandler));
         }

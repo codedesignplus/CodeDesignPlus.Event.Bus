@@ -28,8 +28,8 @@ namespace CodeDesignPlus.Event.Bus.Abstractions
         /// <typeparam name="TEvent">Evento de integración a escuchar</typeparam>
         /// <typeparam name="TEventHandler">Manejador de eventos de integración (Callback)</typeparam>
         /// <returns>System.Threading.Tasks.Task que representa la operación asincrónica</returns>
-        Task SubscribeAsync<TEvent, TEventHandler>() 
-            where TEvent : EventBase 
+        Task SubscribeAsync<TEvent, TEventHandler>()
+            where TEvent : EventBase
             where TEventHandler : IEventHandler<TEvent>;
 
         /// <summary>
@@ -37,8 +37,8 @@ namespace CodeDesignPlus.Event.Bus.Abstractions
         /// </summary>
         /// <typeparam name="TEvent">Evento de integración a escuchar</typeparam>
         /// <typeparam name="TEventHandler">Manejador de eventos de integración (Callback)</typeparam>
-        void Unsubscribe<TEvent, TEventHandler>() 
-            where TEvent : EventBase 
+        void Unsubscribe<TEvent, TEventHandler>()
+            where TEvent : EventBase
             where TEventHandler : IEventHandler<TEvent>;
     }
 }
