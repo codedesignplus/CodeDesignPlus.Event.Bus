@@ -57,7 +57,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Internal.EventBusBackgroundService
             // Act
             backgroundService.StartAsync(CancellationToken.None).ConfigureAwait(false);
 
-            Thread.Sleep(TimeSpan.FromSeconds(2));
+            Thread.Sleep(TimeSpan.FromSeconds(5));
 
             // Assert
             Assert.NotNull(UserEventHandler.Events.FirstOrDefault(x => x.Value == this.userCreatedEvent).Value);
