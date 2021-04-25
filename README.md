@@ -7,19 +7,18 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Build status](https://dev.azure.com/codedesignplus/Software%20Development%20Kit/_apis/build/status/CodeDesignPlus.Core%20-%20CI)](https://dev.azure.com/codedesignplus/Software%20Development%20Kit/_build/latest?definitionId=2)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Core.Key&metric=bugs)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Core.Key)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Core.Key&metric=code_smells)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Core.Key)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Core.Key&metric=coverage)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Core.Key)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Core.Key&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Core.Key)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Core.Key&metric=ncloc)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Core.Key)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Core.Key&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Core.Key)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Core.Key&metric=alert_status)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Core.Key)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Core.Key&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Core.Key)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Core.Key&metric=sqale_index)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Core.Key)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Core.Key&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Core.Key)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Core.Key&metric=security_rating)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Core.Key)
-
+[![Build status](https://dev.azure.com/codedesignplus/Software%20Development%20Kit/_apis/build/status/CodeDesignPlus.Event.Bus%20-%20CI)](https://dev.azure.com/codedesignplus/Software%20Development%20Kit/_build/latest?definitionId=6)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Event.Bus.Key&metric=bugs)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Event.Bus.Key)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Event.Bus.Key&metric=code_smells)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Event.Bus.Key)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Event.Bus.Key&metric=coverage)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Event.Bus.Key)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Event.Bus.Key&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Event.Bus.Key)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Event.Bus.Key&metric=ncloc)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Event.Bus.Key)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Event.Bus.Key&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Event.Bus.Key)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Event.Bus.Key&metric=alert_status)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Event.Bus.Key)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Event.Bus.Key&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Event.Bus.Key)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Event.Bus.Key&metric=sqale_index)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Event.Bus.Key)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Event.Bus.Key&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Event.Bus.Key)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=CodeDesignPlus.Event.Bus.Key&metric=security_rating)](https://sonarcloud.io/dashboard?id=CodeDesignPlus.Event.Bus.Key)
 <!-- PROJECT LOGO -->
 
 <br />
@@ -83,7 +82,7 @@ Toda la información del desarrollo de la librería la encontrar disponible en el 
 *Curso Microservicios:* <br>
 https://www.youtube.com/playlist?list=PLiNuKK_lURW83zP828ACAHev-RZWOop-3
 
-*Librería CodeDesignPlus.Core* <br>
+*Librería CodeDesignPlus.Event.Bus* <br>
 1. [Introducción](https://youtu.be/z2KgqupxqhE)
 2. [Abstracciones, Exceptions](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
 3. [Service](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
