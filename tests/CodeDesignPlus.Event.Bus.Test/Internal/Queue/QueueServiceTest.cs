@@ -98,7 +98,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Internal.Queue
             // Act
             Task.Run(() => this.queueService.DequeueAsync(CancellationToken.None));
 
-            Thread.Sleep(TimeSpan.FromSeconds(5));
+            Thread.Sleep(TimeSpan.FromSeconds(15));
 
             // Assert
             Assert.NotNull(UserEventHandler.Events.FirstOrDefault(x => x.Value == this.userCreatedEvent).Value);

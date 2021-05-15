@@ -33,6 +33,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Abstractions
             Assert.True(eventBus.EventDate > date);
             Assert.Equal(nameof(UserCreatedEvent.Name), eventBus.Name);
             Assert.Equal(nameof(UserCreatedEvent.User), eventBus.User);
+            Assert.True(eventBus.Age > 0);
         }
 
         /// <summary>
@@ -56,10 +57,11 @@ namespace CodeDesignPlus.Event.Bus.Test.Abstractions
 
             //Assert
             Assert.True(eventBus.Id > 0);
-            Assert.NotEmpty(eventBus.IdEvent.ToString());
+            Assert.Equal(guid.ToString(), eventBus.IdEvent.ToString());
             Assert.Equal(eventBus.EventDate, date);
             Assert.Equal(nameof(UserCreatedEvent.Name), eventBus.Name);
             Assert.Equal(nameof(UserCreatedEvent.User), eventBus.User);
+            Assert.True(eventBus.Age > 0);
         }
     }
 }

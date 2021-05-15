@@ -16,7 +16,6 @@ namespace CodeDesignPlus.Event.Bus
         /// Expone el <see cref="Type"/> del manejador de eventos
         /// </summary>
         public Type EventType { get; }
-
         /// <summary>
         /// Expone el <see cref="Type"/> del manejador de eventos
         /// </summary>

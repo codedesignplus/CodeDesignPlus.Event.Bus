@@ -64,7 +64,6 @@ namespace CodeDesignPlus.Event.Bus.Internal.Queue
                 this.queueEvent.Enqueue(@event);
         }
 
-
         /// <summary>
         /// Tries to remove and return the object at the beginning of the concurrent queue.
         /// </summary>
