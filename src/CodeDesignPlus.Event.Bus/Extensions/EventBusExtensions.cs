@@ -56,8 +56,8 @@ namespace CodeDesignPlus.Event.Bus.Extensions
                     var queueServiceType = typeof(IQueueService<,>).MakeGenericType(eventHandler, eventType);
                     var queueServiceImplementationType = typeof(QueueService<,>).MakeGenericType(eventHandler, eventType);
 
-                    var hostServiceType = typeof(IEventBusBackgroundService<,,>).MakeGenericType(queueServiceImplementationType, eventHandler, eventType);
-                    var hostServiceImplementationType = typeof(EventBusBackgroundService<,,>).MakeGenericType(queueServiceImplementationType, eventHandler, eventType);
+                    var hostServiceType = typeof(IEventBusBackgroundService<,>).MakeGenericType(eventHandler, eventType);
+                    var hostServiceImplementationType = typeof(EventBusBackgroundService<,>).MakeGenericType(eventHandler, eventType);
 
                     services.AddSingleton(queueServiceType, queueServiceImplementationType);
                     services.AddTransient(hostServiceType, hostServiceImplementationType);

@@ -52,7 +52,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Internal.EventBusBackgroundService
         {
             // Arrange
             this.queueService.Enqueue(this.userCreatedEvent);
-            var backgroundService = new ES.EventBusBackgroundService<QueueService<UserEventHandler, UserCreatedEvent>, UserEventHandler, UserCreatedEvent>(this.queueService);
+            var backgroundService = new ES.EventBusBackgroundService<UserEventHandler, UserCreatedEvent>(this.queueService);
 
             // Act
             backgroundService.StartAsync(CancellationToken.None).ConfigureAwait(false);

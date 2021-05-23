@@ -24,13 +24,9 @@ namespace CodeDesignPlus.Event.Bus.Abstractions
         /// </summary>
         /// <param name="idEvent">Id Event</param>
         /// <param name="eventDate">Date the event was generated</param>
-        /// <exception cref="ArgumentOutOfRangeException">The assigned date is invalid</exception>
         [JsonConstructor]
         protected EventBase(Guid idEvent, DateTime eventDate)
         {
-            if (eventDate == DateTime.MinValue)
-                throw new ArgumentOutOfRangeException(nameof(eventDate));
-
             this.IdEvent = idEvent;
             this.EventDate = eventDate;
         }
@@ -54,6 +50,25 @@ namespace CodeDesignPlus.Event.Bus.Abstractions
         public virtual bool Equals([AllowNull] EventBase other)
         {
             return this.IdEvent == other.IdEvent;
+        }
+
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="obj">An object to compare with this object.</param>
+        /// <returns> true if the current object is equal to the other parameter; otherwise, false.</returns>
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as EventBase);
+        }
+
+        /// <summary>
+        /// Diffuses the hash code returned by the specified value.
+        /// </summary>
+        /// <returns>The hash code that represents the single value.</returns>
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.IdEvent);
         }
     }
 }

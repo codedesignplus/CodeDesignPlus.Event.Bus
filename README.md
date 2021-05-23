@@ -84,15 +84,15 @@ https://www.youtube.com/playlist?list=PLiNuKK_lURW83zP828ACAHev-RZWOop-3
 
 *Librería CodeDesignPlus.Event.Bus* <br>
 1. [Introducción](https://youtu.be/z2KgqupxqhE)
-2. [Abstracciones, Exceptions](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
-3. [Service](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
-4. [Methods Extensions](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
-5. [Unit Test](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
+2. [Abstracciones, Exceptions](https://youtu.be/9JExRLPpehM)
+3. [Subscription Manager](https://youtu.be/G8as5anhjqQ)
+4. [Background Service Generic, Queue Generic and Extensions](https://youtu.be/hRyZlogi1hc)
+5. [Unit Test - Part 1](https://youtu.be/YX4a3A6Oo10)
+3. [Unit Test - Part 2](https://youtu.be/vODQyPc3qng)
 
 ### Built With
 
 * [.Net 5](https://dotnet.microsoft.com/download)
-
 
 
 <!-- GETTING STARTED -->
@@ -139,10 +139,11 @@ Este ejemplo es desarrollado con [Visual Studio Comumnity](#getting-started), si
 Para un detalle completo lo invitamos a ver los videos de la creación de la librería:
 
 1. [Introducción](https://youtu.be/z2KgqupxqhE)
-2. [Abstracciones, Exceptions](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
-3. [Service](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
-4. [Methods Extensions](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
-5. [Unit Test](https://www.youtube.com/channel/UCyN3NzpfeWB7IqF_jflMyxg)
+2. [Abstracciones, Exceptions](https://youtu.be/9JExRLPpehM)
+3. [Subscription Manager](https://youtu.be/G8as5anhjqQ)
+4. [Background Service Generic, Queue Generic and Extensions](https://youtu.be/hRyZlogi1hc)
+5. [Unit Test - Part 1](https://youtu.be/YX4a3A6Oo10)
+3. [Unit Test - Part 2](https://youtu.be/vODQyPc3qng)
 
 <!-- ROADMAP -->
 ## Roadmap

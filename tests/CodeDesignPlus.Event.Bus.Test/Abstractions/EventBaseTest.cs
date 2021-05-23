@@ -63,5 +63,45 @@ namespace CodeDesignPlus.Event.Bus.Test.Abstractions
             Assert.Equal(nameof(UserCreatedEvent.User), eventBus.User);
             Assert.True(eventBus.Age > 0);
         }
+
+        /// <summary>
+        /// Valida que se genere la excepción si la fecha es menor a DateTime.Min
+        /// </summary>
+        [Fact]
+        public void Constructor_Overload_Equals()
+        {
+            //Arrange
+            var idEvent1 = Guid.NewGuid();
+            var idEvent2 = idEvent1;
+
+            var event1 = new UserCreatedEvent(idEvent1, DateTime.Now);
+
+            var event2 = new UserCreatedEvent(idEvent2, DateTime.Now);
+
+            //Act
+            var result = event1.Equals(event2);
+
+            //Assert
+            Assert.Equal(event1, event2);
+        }
+
+        /// <summary>
+        /// Valida que se genere la excepción si la fecha es menor a DateTime.Min
+        /// </summary>
+        [Fact]
+        public void Constructor_Overload_GetHashCode()
+        {
+            //Arrange
+            var idEvent1 = Guid.NewGuid();
+            var expected = HashCode.Combine(idEvent1);
+
+            var event1 = new UserCreatedEvent(idEvent1, DateTime.Now);
+
+            //Act
+            var result = event1.GetHashCode();
+
+            //Assert
+            Assert.Equal(expected, result);
+        }
     }
 }
