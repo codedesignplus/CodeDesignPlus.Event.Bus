@@ -62,8 +62,8 @@ namespace CodeDesignPlus.Event.Bus.Test.Extensions
             );
 
             var hostService = services.FirstOrDefault(x =>
-                x.ImplementationType.IsAssignableGenericFrom(typeof(IEventBusBackgroundService<,,>)) &&
-                x.ImplementationType == typeof(EventBusBackgroundService<QueueService<UserEventHandler, UserCreatedEvent>, UserEventHandler, UserCreatedEvent>)
+                x.ImplementationType.IsAssignableGenericFrom(typeof(IEventBusBackgroundService<,>)) &&
+                x.ImplementationType == typeof(EventBusBackgroundService<UserEventHandler, UserCreatedEvent>)
             );
 
             Assert.Equal(typeof(UserEventHandler), handler.ImplementationType);
@@ -72,7 +72,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Extensions
             Assert.Equal(typeof(QueueService<UserEventHandler, UserCreatedEvent>), queue.ImplementationType);
             Assert.Equal(ServiceLifetime.Singleton, queue.Lifetime);
 
-            Assert.Equal(typeof(EventBusBackgroundService<QueueService<UserEventHandler, UserCreatedEvent>, UserEventHandler, UserCreatedEvent>), hostService.ImplementationType);
+            Assert.Equal(typeof(EventBusBackgroundService<UserEventHandler, UserCreatedEvent>), hostService.ImplementationType);
             Assert.Equal(ServiceLifetime.Transient, hostService.Lifetime);
         }
 

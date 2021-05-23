@@ -1,8 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <CodeAnalysisRuleSet>..\..\.sonarlint\codedesignplus.event.bus.keycsharp.ruleset</CodeAnalysisRuleSet>
+    <Authors>CodeDesignPlus</Authors>
+    <Company>CodeDesignPlus</Company>
+    <Description>Librearía que provee los servicios y abstracciones base para la administración de los eventos del patrón de publish and subscribe</Description>
+    <Copyright>© CodeDesignPlus. All rights reserved.</Copyright>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/codedesignplus/CodeDesignPlus.Event.Bus</PackageProjectUrl>
+    <PackageIcon>logo.png</PackageIcon>
+    <RepositoryType>Git</RepositoryType>
+    <RepositoryUrl>https://github.com/codedesignplus/CodeDesignPlus.Event.Bus</RepositoryUrl>
+    <PackageTags>CodeDesignPlus SDK</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +24,17 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -270,6 +270,7 @@ namespace CodeDesignPlus.Event.Bus.Test
         /// <summary>
         /// Valida que no queden suscripciones registradas
         /// </summary>
+        [Fact]
         public void Clear_Subscriptions_Empty()
         {
             // Arrange

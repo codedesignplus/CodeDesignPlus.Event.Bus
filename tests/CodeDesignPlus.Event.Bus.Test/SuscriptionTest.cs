@@ -37,6 +37,7 @@ namespace CodeDesignPlus.Event.Bus.Test
         /// <summary>
         /// Valida que se inicie correctamente el estado del objeto
         /// </summary>
+        [Fact]
         public void Create_InitializeStateObject_GetPropertiesValue()
         {
             // Arrange
@@ -49,7 +50,7 @@ namespace CodeDesignPlus.Event.Bus.Test
             // Assert
             Assert.Equal(eventType, subscription.EventType);
             Assert.Equal(eventHandlerType, subscription.EventHandlerType);
-            Assert.Equal(eventHandlerType.Name, subscription.EventName);
+            Assert.Equal(eventType.Name, subscription.EventName);
         }
     }
 }
