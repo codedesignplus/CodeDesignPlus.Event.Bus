@@ -53,26 +53,26 @@ namespace CodeDesignPlus.Event.Bus.Test.Extensions
             // Assert
             var handler = services.FirstOrDefault(x =>
                 x.ImplementationType.IsAssignableGenericFrom(typeof(IEventHandler<>)) &&
-                x.ImplementationType == typeof(UserEventHandler)
+                x.ImplementationType == typeof(UserRegisteredEventHandler)
             );
 
             var queue = services.FirstOrDefault(x =>
                 x.ImplementationType.IsAssignableGenericFrom(typeof(IQueueService<,>)) &&
-                x.ImplementationType == typeof(QueueService<UserEventHandler, UserCreatedEvent>)
+                x.ImplementationType == typeof(QueueService<UserRegisteredEventHandler, UserRegisteredEvent>)
             );
 
             var hostService = services.FirstOrDefault(x =>
                 x.ImplementationType.IsAssignableGenericFrom(typeof(IEventBusBackgroundService<,>)) &&
-                x.ImplementationType == typeof(EventBusBackgroundService<UserEventHandler, UserCreatedEvent>)
+                x.ImplementationType == typeof(EventBusBackgroundService<UserRegisteredEventHandler, UserRegisteredEvent>)
             );
 
-            Assert.Equal(typeof(UserEventHandler), handler.ImplementationType);
+            Assert.Equal(typeof(UserRegisteredEventHandler), handler.ImplementationType);
             Assert.Equal(ServiceLifetime.Transient, handler.Lifetime);
 
-            Assert.Equal(typeof(QueueService<UserEventHandler, UserCreatedEvent>), queue.ImplementationType);
+            Assert.Equal(typeof(QueueService<UserRegisteredEventHandler, UserRegisteredEvent>), queue.ImplementationType);
             Assert.Equal(ServiceLifetime.Singleton, queue.Lifetime);
 
-            Assert.Equal(typeof(EventBusBackgroundService<UserEventHandler, UserCreatedEvent>), hostService.ImplementationType);
+            Assert.Equal(typeof(EventBusBackgroundService<UserRegisteredEventHandler, UserRegisteredEvent>), hostService.ImplementationType);
             Assert.Equal(ServiceLifetime.Transient, hostService.Lifetime);
         }
 
@@ -94,11 +94,11 @@ namespace CodeDesignPlus.Event.Bus.Test.Extensions
             serviceProvider.SubscribeEventsHandlers<Startup>();
 
             // Assert
-            var subscription = subscriptionManager.FindSubscription<UserCreatedEvent, UserEventHandler>();
+            var subscription = subscriptionManager.FindSubscription<UserRegisteredEvent, UserRegisteredEventHandler>();
 
             Assert.NotNull(subscription);
-            Assert.Equal(typeof(UserCreatedEvent), subscription.EventType);
-            Assert.Equal(typeof(UserEventHandler), subscription.EventHandlerType);
+            Assert.Equal(typeof(UserRegisteredEvent), subscription.EventType);
+            Assert.Equal(typeof(UserRegisteredEventHandler), subscription.EventHandlerType);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Extensions
         public void IsAssignableGenericFrom_ClassImplementInterface_True()
         {
             // Arrange
-            var eventHandler = new UserEventHandler();
+            var eventHandler = new UserRegisteredEventHandler();
 
             // Act
             var success = eventHandler.GetType().IsAssignableGenericFrom(typeof(IEventHandler<>));
@@ -124,7 +124,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Extensions
         public void IsAssignableGenericFrom_ClassNotImplementInterface_False()
         {
             // Arrange
-            var eventHandler = new UserEventHandler();
+            var eventHandler = new UserRegisteredEventHandler();
 
             // Act
             var success = eventHandler.GetType().IsAssignableGenericFrom(typeof(IQueueService<,>));

@@ -18,7 +18,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Execptions
         public void Constructor_WithoutArguments_Exception()
         {
             // Arrange & Act
-            var exception = new EventHandlerAlreadyRegisteredException<UserCreatedEvent, UserEventHandler>();
+            var exception = new EventHandlerAlreadyRegisteredException<UserRegisteredEvent, UserRegisteredEventHandler>();
 
             // Assert
             Assert.NotEmpty(exception.Message);
@@ -35,7 +35,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Execptions
             var message = Guid.NewGuid().ToString();
 
             // Act
-            var exception = new EventHandlerAlreadyRegisteredException<UserCreatedEvent, UserEventHandler>(message);
+            var exception = new EventHandlerAlreadyRegisteredException<UserRegisteredEvent, UserRegisteredEventHandler>(message);
 
             // Assert
             Assert.Equal(message, exception.Message);
@@ -53,7 +53,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Execptions
             var innerException = new InvalidOperationException("The operation is invalid");
 
             // Act
-            var exception = new EventHandlerAlreadyRegisteredException<UserCreatedEvent, UserEventHandler>(message, innerException);
+            var exception = new EventHandlerAlreadyRegisteredException<UserRegisteredEvent, UserRegisteredEventHandler>(message, innerException);
 
             // Assert
             Assert.Equal(innerException, exception.InnerException);
@@ -72,9 +72,9 @@ namespace CodeDesignPlus.Event.Bus.Test.Execptions
             var innerException = new InvalidOperationException("The operation is invalid");
 
             // Act
-            var exception = new EventHandlerAlreadyRegisteredException<UserCreatedEvent, UserEventHandler>(message, innerException);
+            var exception = new EventHandlerAlreadyRegisteredException<UserRegisteredEvent, UserRegisteredEventHandler>(message, innerException);
             var bytes = SerializeToBytes(exception);
-            var result = DeserializeFromBytes<EventHandlerAlreadyRegisteredException<UserCreatedEvent, UserEventHandler>>(bytes);
+            var result = DeserializeFromBytes<EventHandlerAlreadyRegisteredException<UserRegisteredEvent, UserRegisteredEventHandler>>(bytes);
 
             // Assert
             Assert.True(bytes.Length > 0);

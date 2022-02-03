@@ -1,5 +1,4 @@
 ﻿using CodeDesignPlus.Event.Bus.Abstractions;
-using CodeDesignPlus.Event.Bus.Internal.Queue;
 
 namespace CodeDesignPlus.Event.Bus.Internal.EventBusBackgroundService
 {

@@ -6,22 +6,22 @@ namespace CodeDesignPlus.Event.Bus.Test.Helpers
     /// <summary>
     /// Evento de integración usado cuando es creado un usuarios
     /// </summary>
-    public class UserCreatedEvent : EventBase
+    public class UserRegisteredEvent : EventBase
     {
         /// <summary>
-        /// Crea una nueva instancia de <see cref="UserCreatedEvent"/>
+        /// Crea una nueva instancia de <see cref="UserRegisteredEvent"/>
         /// </summary>
-        public UserCreatedEvent()
+        public UserRegisteredEvent()
         {
         }
 
         /// <summary>
-        /// Crea una nueva instancia de <see cref="UserCreatedEvent"/>
+        /// Crea una nueva instancia de <see cref="UserRegisteredEvent"/>
         /// </summary>
         /// <param name="idEvent">Id Event</param>
         /// <param name="eventDate">Date the event was generated</param>
         /// <exception cref="ArgumentOutOfRangeException">The assigned date is invalid</exception>
-        public UserCreatedEvent(Guid idEvent, DateTime eventDate) : base(idEvent, eventDate)
+        public UserRegisteredEvent(Guid idEvent, DateTime eventDate) : base(idEvent, eventDate)
         {
         }
 
