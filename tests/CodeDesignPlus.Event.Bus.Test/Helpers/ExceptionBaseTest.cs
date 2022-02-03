@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace CodeDesignPlus.Event.Bus.Test.Helpers
 {
     /// <summary>
-    /// Clase base para las pruebas unitarias
+    /// Base class to unit test exception
     /// </summary>
     public abstract class ExceptionBaseTest
     {
@@ -19,7 +19,9 @@ namespace CodeDesignPlus.Event.Bus.Test.Helpers
         {
             using var stream = new MemoryStream();
 
+#pragma warning disable SYSLIB0011 // obsolete
             new BinaryFormatter().Serialize(stream, exception);
+#pragma warning restore SYSLIB0011 // obsolete
 
             return stream.GetBuffer();
         }
@@ -33,7 +35,9 @@ namespace CodeDesignPlus.Event.Bus.Test.Helpers
         protected virtual TException DeserializeFromBytes<TException>(byte[] bytes) where TException : Exception
         {
             using var stream = new MemoryStream(bytes);
+#pragma warning disable SYSLIB0011 // obsolete
             return (TException)new BinaryFormatter().Deserialize(stream);
+#pragma warning restore SYSLIB0011 // obsolete
         }
     }
 }

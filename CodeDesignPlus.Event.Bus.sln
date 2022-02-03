@@ -7,7 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C68DE338-79A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{B05765B7-5C57-4C64-B57E-2DB1783CC918}"
 	ProjectSection(SolutionItems) = preProject
-		doc\diagrams\Diagrama.drawio = doc\diagrams\Diagrama.drawio
 		LICENSE.md = LICENSE.md
 		README.md = README.md
 	EndProjectSection
@@ -28,7 +27,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pipelines", "pipelines", "{
 		pipelines\git-version.yaml = pipelines\git-version.yaml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeDesignPlus.Event.Bus.Without.EventBusService.Test", "tests\CodeDesignPlus.Event.Bus.Without.EventBusService.Test\CodeDesignPlus.Event.Bus.Without.EventBusService.Test.csproj", "{6ED793CA-E529-492B-85C9-BD5047911080}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeDesignPlus.Event.Bus.Without.EventBusService.Test", "tests\CodeDesignPlus.Event.Bus.Without.EventBusService.Test\CodeDesignPlus.Event.Bus.Without.EventBusService.Test.csproj", "{6ED793CA-E529-492B-85C9-BD5047911080}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{5BE64C3A-7851-4151-9DA7-B8E8498316F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "diagram", "diagram", "{A0347382-75A8-4149-A554-A77A730A4AFD}"
+	ProjectSection(SolutionItems) = preProject
+		doc\diagrams\Diagrama.drawio = doc\diagrams\Diagrama.drawio
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +62,8 @@ Global
 		{9303F95A-1018-4235-821D-05CB6241C326} = {C68DE338-79A4-405B-9DA4-2E52DBED3669}
 		{65963C94-7430-4F49-A160-C496F4628BD0} = {4CD449B0-7238-4487-AE9E-930C75727794}
 		{6ED793CA-E529-492B-85C9-BD5047911080} = {4CD449B0-7238-4487-AE9E-930C75727794}
+		{5BE64C3A-7851-4151-9DA7-B8E8498316F7} = {B05765B7-5C57-4C64-B57E-2DB1783CC918}
+		{A0347382-75A8-4149-A554-A77A730A4AFD} = {B05765B7-5C57-4C64-B57E-2DB1783CC918}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {26813293-6EDA-4BAE-8A0A-954028266FA3}

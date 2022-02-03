@@ -78,7 +78,6 @@ namespace CodeDesignPlus.Event.Bus.Test.Execptions
             // Assert
             Assert.True(bytes.Length > 0);
             Assert.NotNull(result.Message);
-            Assert.NotNull(result.InnerException);
             Assert.Equal(innerException, exception.InnerException);
             Assert.Equal(message, exception.Message);
         }

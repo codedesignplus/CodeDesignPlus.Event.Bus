@@ -3,10 +3,10 @@ cd ..
 # Vars
 $path = "tests\CodeDesignPlus.Event.Bus.Test"
 $project = "$path\CodeDesignPlus.Event.Bus.Test.csproj"
-$report = "$path\coverage.opencover.xml"
+$report = "**\coverage.opencover.xml"
 
 # Run Sonnar Scanner  
-dotnet test $project `
+dotnet test `
     /p:CollectCoverage=true `
     /p:CoverletOutputFormat=opencover `
 

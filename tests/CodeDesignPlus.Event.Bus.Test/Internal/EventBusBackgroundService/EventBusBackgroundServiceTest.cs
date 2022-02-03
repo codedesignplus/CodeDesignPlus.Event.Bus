@@ -14,34 +14,34 @@ namespace CodeDesignPlus.Event.Bus.Test.Internal.EventBusBackgroundService
     public class EventBusBackgroundServiceTest
     {
         /// <summary>
-        /// Event Handler que procesa los eventos de tipo <see cref="UserCreatedEvent"/>
+        /// Event Handler que procesa los eventos de tipo <see cref="UserRegisteredEvent"/>
         /// </summary>
-        private readonly UserEventHandler userEventHandler;
+        private readonly UserRegisteredEventHandler userEventHandler;
         /// <summary>
         /// Evento de integración usado cuando es creado un usuarios
         /// </summary>
-        private readonly UserCreatedEvent userCreatedEvent;
+        private readonly UserRegisteredEvent userCreatedEvent;
         /// <summary>
         /// ervicio que administra los eventos notificados por el event bus
         /// </summary>
-        private readonly QueueService<UserEventHandler, UserCreatedEvent> queueService;
+        private readonly QueueService<UserRegisteredEventHandler, UserRegisteredEvent> queueService;
 
         /// <summary>
         /// Crea una nueva instancia de <see cref="EventBusBackgroundServiceTest"/>
         /// </summary>
         public EventBusBackgroundServiceTest()
         {
-            this.userCreatedEvent = new UserCreatedEvent()
+            this.userCreatedEvent = new UserRegisteredEvent()
             {
                 Id = new Random().Next(1, 1000),
                 Age = (ushort)new Random().Next(1, 100),
-                Name = nameof(UserCreatedEvent.Name),
-                User = nameof(UserCreatedEvent.User),
+                Name = nameof(UserRegisteredEvent.Name),
+                User = nameof(UserRegisteredEvent.User),
             };
 
-            this.userEventHandler = new UserEventHandler();
+            this.userEventHandler = new UserRegisteredEventHandler();
 
-            this.queueService = new QueueService<UserEventHandler, UserCreatedEvent>(this.userEventHandler);
+            this.queueService = new QueueService<UserRegisteredEventHandler, UserRegisteredEvent>(this.userEventHandler);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Internal.EventBusBackgroundService
         {
             // Arrange
             this.queueService.Enqueue(this.userCreatedEvent);
-            var backgroundService = new ES.EventBusBackgroundService<UserEventHandler, UserCreatedEvent>(this.queueService);
+            var backgroundService = new ES.EventBusBackgroundService<UserRegisteredEventHandler, UserRegisteredEvent>(this.queueService);
 
             // Act
             backgroundService.StartAsync(CancellationToken.None).ConfigureAwait(false);
@@ -60,7 +60,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Internal.EventBusBackgroundService
             Thread.Sleep(TimeSpan.FromSeconds(15));
 
             // Assert
-            Assert.NotNull(UserEventHandler.Events.FirstOrDefault(x => x.Value == this.userCreatedEvent).Value);
+            Assert.NotNull(this.userEventHandler.Events.FirstOrDefault(x => x.Value == this.userCreatedEvent).Value);
             Assert.False(this.queueService.Any());
         }
     }

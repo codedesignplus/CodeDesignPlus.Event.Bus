@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace CodeDesignPlus.Event.Bus.Exceptions
 {
     /// <summary>
-    /// This exception that is thrown when ocurre un error interno en subscription manager
+    /// This exception that is thrown when occurred an error inside in subscription manager
     /// </summary>
     [Serializable]
     public class EventBusException : Exception

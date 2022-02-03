@@ -49,19 +49,23 @@ namespace CodeDesignPlus.Event.Bus.Extensions
             foreach (var eventHandler in eventsHandlers)
             {
                 var interfaceEventHandlerGeneric = eventHandler.GetInterfaces().FirstOrDefault(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IEventHandler<>));
-                var eventType = interfaceEventHandlerGeneric?.GetGenericArguments().FirstOrDefault(x => x.IsClass && !x.IsAbstract && x.IsSubclassOf(typeof(EventBase)));
 
-                if (interfaceEventHandlerGeneric != null && eventType != null)
+                if (interfaceEventHandlerGeneric != null)
                 {
-                    var queueServiceType = typeof(IQueueService<,>).MakeGenericType(eventHandler, eventType);
-                    var queueServiceImplementationType = typeof(QueueService<,>).MakeGenericType(eventHandler, eventType);
+                    var eventType = interfaceEventHandlerGeneric.GetGenericArguments().FirstOrDefault(x => x.IsClass && !x.IsAbstract && x.IsSubclassOf(typeof(EventBase)));
 
-                    var hostServiceType = typeof(IEventBusBackgroundService<,>).MakeGenericType(eventHandler, eventType);
-                    var hostServiceImplementationType = typeof(EventBusBackgroundService<,>).MakeGenericType(eventHandler, eventType);
+                    if (eventType != null)
+                    {
+                        var queueServiceType = typeof(IQueueService<,>).MakeGenericType(eventHandler, eventType);
+                        var queueServiceImplementationType = typeof(QueueService<,>).MakeGenericType(eventHandler, eventType);
 
-                    services.AddSingleton(queueServiceType, queueServiceImplementationType);
-                    services.AddTransient(hostServiceType, hostServiceImplementationType);
-                    services.AddTransient(eventHandler);
+                        var hostServiceType = typeof(IEventBusBackgroundService<,>).MakeGenericType(eventHandler, eventType);
+                        var hostServiceImplementationType = typeof(EventBusBackgroundService<,>).MakeGenericType(eventHandler, eventType);
+
+                        services.AddSingleton(queueServiceType, queueServiceImplementationType);
+                        services.AddTransient(hostServiceType, hostServiceImplementationType);
+                        services.AddTransient(eventHandler);
+                    }
                 }
             }
 

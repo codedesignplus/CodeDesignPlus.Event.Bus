@@ -19,20 +19,20 @@ namespace CodeDesignPlus.Event.Bus.Test.Abstractions
             var date = DateTime.Now;
 
             //Act
-            var eventBus = new UserCreatedEvent()
+            var eventBus = new UserRegisteredEvent()
             {
                 Id = new Random().Next(1, 1000),
                 Age = (ushort)new Random().Next(1, 100),
-                Name = nameof(UserCreatedEvent.Name),
-                User = nameof(UserCreatedEvent.User),
+                Name = nameof(UserRegisteredEvent.Name),
+                User = nameof(UserRegisteredEvent.User),
             };
 
             //Assert
             Assert.True(eventBus.Id > 0);
             Assert.NotEmpty(eventBus.IdEvent.ToString());
             Assert.True(eventBus.EventDate > date);
-            Assert.Equal(nameof(UserCreatedEvent.Name), eventBus.Name);
-            Assert.Equal(nameof(UserCreatedEvent.User), eventBus.User);
+            Assert.Equal(nameof(UserRegisteredEvent.Name), eventBus.Name);
+            Assert.Equal(nameof(UserRegisteredEvent.User), eventBus.User);
             Assert.True(eventBus.Age > 0);
         }
 
@@ -47,20 +47,20 @@ namespace CodeDesignPlus.Event.Bus.Test.Abstractions
             var guid = Guid.NewGuid();
 
             //Act
-            var eventBus = new UserCreatedEvent(guid, date)
+            var eventBus = new UserRegisteredEvent(guid, date)
             {
                 Id = new Random().Next(1, 1000),
                 Age = (ushort)new Random().Next(1, 100),
-                Name = nameof(UserCreatedEvent.Name),
-                User = nameof(UserCreatedEvent.User),
+                Name = nameof(UserRegisteredEvent.Name),
+                User = nameof(UserRegisteredEvent.User),
             };
 
             //Assert
             Assert.True(eventBus.Id > 0);
             Assert.Equal(guid.ToString(), eventBus.IdEvent.ToString());
             Assert.Equal(eventBus.EventDate, date);
-            Assert.Equal(nameof(UserCreatedEvent.Name), eventBus.Name);
-            Assert.Equal(nameof(UserCreatedEvent.User), eventBus.User);
+            Assert.Equal(nameof(UserRegisteredEvent.Name), eventBus.Name);
+            Assert.Equal(nameof(UserRegisteredEvent.User), eventBus.User);
             Assert.True(eventBus.Age > 0);
         }
 
@@ -74,9 +74,9 @@ namespace CodeDesignPlus.Event.Bus.Test.Abstractions
             var idEvent1 = Guid.NewGuid();
             var idEvent2 = idEvent1;
 
-            var event1 = new UserCreatedEvent(idEvent1, DateTime.Now);
+            var event1 = new UserRegisteredEvent(idEvent1, DateTime.Now);
 
-            var event2 = new UserCreatedEvent(idEvent2, DateTime.Now);
+            var event2 = new UserRegisteredEvent(idEvent2, DateTime.Now);
 
             //Act
             var result = event1.Equals(event2);
@@ -95,7 +95,7 @@ namespace CodeDesignPlus.Event.Bus.Test.Abstractions
             var idEvent1 = Guid.NewGuid();
             var expected = HashCode.Combine(idEvent1);
 
-            var event1 = new UserCreatedEvent(idEvent1, DateTime.Now);
+            var event1 = new UserRegisteredEvent(idEvent1, DateTime.Now);
 
             //Act
             var result = event1.GetHashCode();

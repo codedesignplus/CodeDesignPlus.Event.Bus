@@ -10,28 +10,28 @@ namespace CodeDesignPlus.Event.Bus.Test
     public class SuscriptionTest
     {
         /// <summary>
-        /// Event Handler que procesa los eventos de tipo <see cref="UserCreatedEvent"/>
+        /// Event Handler que procesa los eventos de tipo <see cref="UserRegisteredEvent"/>
         /// </summary>
-        private readonly UserEventHandler userEventHandler;
+        private readonly UserRegisteredEventHandler userEventHandler;
         /// <summary>
         /// Evento de integración usado cuando es creado un usuarios
         /// </summary>
-        private readonly UserCreatedEvent userCreatedEvent;
+        private readonly UserRegisteredEvent userCreatedEvent;
 
         /// <summary>
         /// Crea una nueva instancia de <see cref="SuscriptionTest"/>
         /// </summary>
         public SuscriptionTest()
         {
-            this.userCreatedEvent = new UserCreatedEvent()
+            this.userCreatedEvent = new UserRegisteredEvent()
             {
                 Id = new Random().Next(1, 1000),
                 Age = (ushort)new Random().Next(1, 100),
-                Name = nameof(UserCreatedEvent.Name),
-                User = nameof(UserCreatedEvent.User),
+                Name = nameof(UserRegisteredEvent.Name),
+                User = nameof(UserRegisteredEvent.User),
             };
 
-            this.userEventHandler = new UserEventHandler();
+            this.userEventHandler = new UserRegisteredEventHandler();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace CodeDesignPlus.Event.Bus.Test
             var eventHandlerType = this.userEventHandler.GetType();
 
             // Act
-            var subscription = Subscription.Create<UserCreatedEvent, UserEventHandler>();
+            var subscription = Subscription.Create<UserRegisteredEvent, UserRegisteredEventHandler>();
 
             // Assert
             Assert.Equal(eventType, subscription.EventType);

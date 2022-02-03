@@ -14,34 +14,34 @@ namespace CodeDesignPlus.Event.Bus.Test.Internal.Queue
     public class QueueServiceTest
     {
         /// <summary>
-        /// Event Handler que procesa los eventos de tipo <see cref="UserCreatedEvent"/>
+        /// Event Handler que procesa los eventos de tipo <see cref="UserRegisteredEvent"/>
         /// </summary>
-        private readonly UserEventHandler userEventHandler;
+        private readonly UserRegisteredEventHandler userEventHandler;
         /// <summary>
         /// Evento de integración usado cuando es creado un usuarios
         /// </summary>
-        private readonly UserCreatedEvent userCreatedEvent;
+        private readonly UserRegisteredEvent userCreatedEvent;
         /// <summary>
         /// ervicio que administra los eventos notificados por el event bus
         /// </summary>
-        private readonly QueueService<UserEventHandler, UserCreatedEvent> queueService;
+        private readonly QueueService<UserRegisteredEventHandler, UserRegisteredEvent> queueService;
 
         /// <summary>
         /// Crea una nueva instancia de <see cref="QueueServiceTest"/>
         /// </summary>
         public QueueServiceTest()
         {
-            this.userCreatedEvent = new UserCreatedEvent()
+            this.userCreatedEvent = new UserRegisteredEvent()
             {
                 Id = new Random().Next(1, 1000),
                 Age = (ushort)new Random().Next(1, 100),
-                Name = nameof(UserCreatedEvent.Name),
-                User = nameof(UserCreatedEvent.User),
+                Name = nameof(UserRegisteredEvent.Name),
+                User = nameof(UserRegisteredEvent.User),
             };
 
-            this.userEventHandler = new UserEventHandler();
+            this.userEventHandler = new UserRegisteredEventHandler();
 
-            this.queueService = new QueueService<UserEventHandler, UserCreatedEvent>(this.userEventHandler);
+            this.queueService = new QueueService<UserRegisteredEventHandler, UserRegisteredEvent>(this.userEventHandler);
         }
 
         /// <summary>
@@ -101,7 +101,33 @@ namespace CodeDesignPlus.Event.Bus.Test.Internal.Queue
             Thread.Sleep(TimeSpan.FromSeconds(15));
 
             // Assert
-            Assert.NotNull(UserEventHandler.Events.FirstOrDefault(x => x.Value == this.userCreatedEvent).Value);
+            Assert.NotNull(this.userEventHandler.Events.FirstOrDefault(x => x.Value == this.userCreatedEvent).Value);
+            Assert.False(this.queueService.Any());
+        }
+
+        /// <summary>
+        /// Valida que se pueda detener el bucle while
+        /// </summary>
+        [Fact]
+        public void DequeueAsync_CancelToken_QueueEmpty()
+        {
+            // Arrange
+            var cancellationTokenSource = new CancellationTokenSource(); 
+            var cancellationToken = cancellationTokenSource.Token;
+
+            this.queueService.Enqueue(this.userCreatedEvent);
+
+            // Act
+            Task.Run(() => this.queueService.DequeueAsync(cancellationToken));
+
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+
+            cancellationTokenSource.Cancel();
+
+            Thread.Sleep(TimeSpan.FromSeconds(15));
+
+            // Assert
+            Assert.NotNull(this.userEventHandler.Events.FirstOrDefault(x => x.Value == this.userCreatedEvent).Value);
             Assert.False(this.queueService.Any());
         }
     }

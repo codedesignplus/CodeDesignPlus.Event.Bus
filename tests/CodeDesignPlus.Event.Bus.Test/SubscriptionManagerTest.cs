@@ -32,7 +32,7 @@ namespace CodeDesignPlus.Event.Bus.Test
             // Arrange
             var subscription = new SubscriptionManager();
 
-            subscription.AddSubscription<UserCreatedEvent, UserEventHandler>();
+            subscription.AddSubscription<UserRegisteredEvent, UserRegisteredEventHandler>();
 
             // Act & Assert
             Assert.True(subscription.Any());
@@ -48,10 +48,10 @@ namespace CodeDesignPlus.Event.Bus.Test
             var subscription = new SubscriptionManager();
 
             // Act
-            var eventName = subscription.GetEventKey<UserCreatedEvent>();
+            var eventName = subscription.GetEventKey<UserRegisteredEvent>();
 
             // Assert
-            Assert.Equal(typeof(UserCreatedEvent).Name, eventName);
+            Assert.Equal(typeof(UserRegisteredEvent).Name, eventName);
         }
 
         /// <summary>
@@ -64,10 +64,10 @@ namespace CodeDesignPlus.Event.Bus.Test
             var subscription = new SubscriptionManager();
 
             // Act
-            subscription.AddSubscription<UserCreatedEvent, UserEventHandler>();
+            subscription.AddSubscription<UserRegisteredEvent, UserRegisteredEventHandler>();
 
             // Assert
-            var subscriptionEvent = subscription.FindSubscription<UserCreatedEvent, UserEventHandler>();
+            var subscriptionEvent = subscription.FindSubscription<UserRegisteredEvent, UserRegisteredEventHandler>();
             Assert.NotNull(subscriptionEvent);
         }
 
@@ -79,13 +79,13 @@ namespace CodeDesignPlus.Event.Bus.Test
         public void AddSubscription_EventHasSubscription_EventHandlerAlreadyRegisteredException()
         {
             // Arrange
-            var eventType = typeof(UserCreatedEvent);
-            var eventHandlerType = typeof(UserEventHandler);
+            var eventType = typeof(UserRegisteredEvent);
+            var eventHandlerType = typeof(UserRegisteredEventHandler);
             var subscription = new SubscriptionManager();
-            subscription.AddSubscription<UserCreatedEvent, UserEventHandler>();
+            subscription.AddSubscription<UserRegisteredEvent, UserRegisteredEventHandler>();
 
             // Act & Assert
-            var exception = Assert.Throws<EventHandlerAlreadyRegisteredException<UserCreatedEvent, UserEventHandler>>(() => subscription.AddSubscription<UserCreatedEvent, UserEventHandler>());
+            var exception = Assert.Throws<EventHandlerAlreadyRegisteredException<UserRegisteredEvent, UserRegisteredEventHandler>>(() => subscription.AddSubscription<UserRegisteredEvent, UserRegisteredEventHandler>());
 
             // Assert
             Assert.NotEmpty(exception.Message);
@@ -103,7 +103,7 @@ namespace CodeDesignPlus.Event.Bus.Test
             var subscription = new SubscriptionManager();
 
             // Act & Assert
-            var exception = Assert.Throws<EventIsNotRegisteredException>(() => subscription.RemoveSubscription<UserCreatedEvent, UserEventHandler>());
+            var exception = Assert.Throws<EventIsNotRegisteredException>(() => subscription.RemoveSubscription<UserRegisteredEvent, UserRegisteredEventHandler>());
 
             // Assert
             Assert.NotEmpty(exception.Message);
@@ -118,10 +118,32 @@ namespace CodeDesignPlus.Event.Bus.Test
         {
             // Arrange
             var subscription = new SubscriptionManager();
-            subscription.AddSubscription<UserCreatedEvent, UserEventHandler>();
+            subscription.AddSubscription<UserRegisteredEvent, UserRegisteredEventHandler>();
 
             // Act
-            subscription.RemoveSubscription<UserCreatedEvent, UserEventHandler>();
+            subscription.RemoveSubscription<UserRegisteredEvent, UserRegisteredEventHandler>();
+
+            // Assert
+            Assert.False(subscription.Any());
+        }
+
+        /// <summary>
+        /// Valida que se invoke el evento cuando se remueve una suscripción
+        /// </summary>
+        [Fact]
+        public void RemoveSubscription_OnEventRemoved_Invoked()
+        {
+            // Arrange
+            var subscription = new SubscriptionManager();
+
+            subscription.OnEventRemoved += ( sender, e) => { 
+                Assert.Equal(nameof(UserRegisteredEvent), e.EventName);
+            };
+
+            subscription.AddSubscription<UserRegisteredEvent, UserRegisteredEventHandler>();
+
+            // Act
+            subscription.RemoveSubscription<UserRegisteredEvent, UserRegisteredEventHandler>();
 
             // Assert
             Assert.False(subscription.Any());
@@ -137,7 +159,7 @@ namespace CodeDesignPlus.Event.Bus.Test
             var subscription = new SubscriptionManager();
 
             // Act
-            var hasSubscription = subscription.HasSubscriptionsForEvent<UserCreatedEvent>();
+            var hasSubscription = subscription.HasSubscriptionsForEvent<UserRegisteredEvent>();
 
             // Assert
             Assert.False(hasSubscription);
@@ -151,10 +173,10 @@ namespace CodeDesignPlus.Event.Bus.Test
         {
             // Arrange
             var subscription = new SubscriptionManager();
-            subscription.AddSubscription<UserCreatedEvent, UserEventHandler>();
+            subscription.AddSubscription<UserRegisteredEvent, UserRegisteredEventHandler>();
 
             // Act
-            var hasSubscription = subscription.HasSubscriptionsForEvent<UserCreatedEvent>();
+            var hasSubscription = subscription.HasSubscriptionsForEvent<UserRegisteredEvent>();
 
             // Assert
             Assert.True(hasSubscription);
@@ -170,7 +192,7 @@ namespace CodeDesignPlus.Event.Bus.Test
             var subscription = new SubscriptionManager();
 
             // Act & Assert
-            var exception = Assert.Throws<EventIsNotRegisteredException>(() => subscription.GetHandlers<UserCreatedEvent>());
+            var exception = Assert.Throws<EventIsNotRegisteredException>(() => subscription.GetHandlers<UserRegisteredEvent>());
 
             // Assert
             Assert.NotEmpty(exception.Message);
@@ -184,13 +206,13 @@ namespace CodeDesignPlus.Event.Bus.Test
         {
             // Arrange
             var subscription = new SubscriptionManager();
-            subscription.AddSubscription<UserCreatedEvent, UserEventHandler>();
+            subscription.AddSubscription<UserRegisteredEvent, UserRegisteredEventHandler>();
 
             // Act
-            var handlers = subscription.GetHandlers<UserCreatedEvent>();
+            var handlers = subscription.GetHandlers<UserRegisteredEvent>();
 
             // Assert
-            Assert.Contains(handlers, handler => handler.EventHandlerType == typeof(UserEventHandler));
+            Assert.Contains(handlers, handler => handler.EventHandlerType == typeof(UserRegisteredEventHandler));
         }
 
         /// <summary>
@@ -203,7 +225,7 @@ namespace CodeDesignPlus.Event.Bus.Test
             var subscription = new SubscriptionManager();
 
             // Act
-            var exception = Assert.Throws<EventIsNotRegisteredException>(() => subscription.FindSubscription<UserCreatedEvent, UserEventHandler>());
+            var exception = Assert.Throws<EventIsNotRegisteredException>(() => subscription.FindSubscription<UserRegisteredEvent, UserRegisteredEventHandler>());
 
             // Assert
             Assert.NotEmpty(exception.Message);
@@ -217,16 +239,16 @@ namespace CodeDesignPlus.Event.Bus.Test
         {
             // Arrange
             var subscription = new SubscriptionManager();
-            subscription.AddSubscription<UserCreatedEvent, UserEventHandler>();
+            subscription.AddSubscription<UserRegisteredEvent, UserRegisteredEventHandler>();
 
             // Act
-            var subscriptionEvent = subscription.FindSubscription<UserCreatedEvent, UserEventHandler>();
+            var subscriptionEvent = subscription.FindSubscription<UserRegisteredEvent, UserRegisteredEventHandler>();
 
             // Assert
             Assert.NotNull(subscriptionEvent);
-            Assert.Equal(typeof(UserCreatedEvent), subscriptionEvent.EventType);
-            Assert.Equal(typeof(UserEventHandler), subscriptionEvent.EventHandlerType);
-            Assert.Equal(typeof(UserCreatedEvent).Name, subscriptionEvent.EventName);
+            Assert.Equal(typeof(UserRegisteredEvent), subscriptionEvent.EventType);
+            Assert.Equal(typeof(UserRegisteredEventHandler), subscriptionEvent.EventHandlerType);
+            Assert.Equal(typeof(UserRegisteredEvent).Name, subscriptionEvent.EventName);
         }
 
         /// <summary>
@@ -239,7 +261,7 @@ namespace CodeDesignPlus.Event.Bus.Test
             var subscription = new SubscriptionManager();
 
             // Act
-            var exception = Assert.Throws<EventIsNotRegisteredException>(() => subscription.FindSubscriptions<UserCreatedEvent>());
+            var exception = Assert.Throws<EventIsNotRegisteredException>(() => subscription.FindSubscriptions<UserRegisteredEvent>());
 
             // Assert
             Assert.NotEmpty(exception.Message);
@@ -253,17 +275,17 @@ namespace CodeDesignPlus.Event.Bus.Test
         {
             // Arrange
             var subscription = new SubscriptionManager();
-            subscription.AddSubscription<UserCreatedEvent, UserEventHandler>();
+            subscription.AddSubscription<UserRegisteredEvent, UserRegisteredEventHandler>();
 
             // Act
-            var subscriptionsEvents = subscription.FindSubscriptions<UserCreatedEvent>();
+            var subscriptionsEvents = subscription.FindSubscriptions<UserRegisteredEvent>();
 
             // Assert
             Assert.NotEmpty(subscriptionsEvents);
             Assert.Contains(subscriptionsEvents, x =>
-                x.EventType == typeof(UserCreatedEvent) &&
-                x.EventHandlerType == typeof(UserEventHandler) &&
-                x.EventName == typeof(UserCreatedEvent).Name
+                x.EventType == typeof(UserRegisteredEvent) &&
+                x.EventHandlerType == typeof(UserRegisteredEventHandler) &&
+                x.EventName == typeof(UserRegisteredEvent).Name
             );
         }
 
@@ -275,7 +297,7 @@ namespace CodeDesignPlus.Event.Bus.Test
         {
             // Arrange
             var subscription = new SubscriptionManager();
-            subscription.AddSubscription<UserCreatedEvent, UserEventHandler>();
+            subscription.AddSubscription<UserRegisteredEvent, UserRegisteredEventHandler>();
 
             // Act
             subscription.Clear();
