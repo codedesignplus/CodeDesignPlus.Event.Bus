@@ -54,8 +54,6 @@ namespace CodeDesignPlus.Event.Bus.Test.Helpers
             where TEvent : EventBase
             where TEventHandler : IEventHandler<TEvent>
         {
-            this.Subscription.AddSubscription<TEvent, TEventHandler>();
-
             return Task.CompletedTask;
         }
 

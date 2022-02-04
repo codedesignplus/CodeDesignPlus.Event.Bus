@@ -81,7 +81,13 @@ namespace CodeDesignPlus.Event.Bus.Extensions
         public static IServiceProvider SubscribeEventsHandlers<TStartupLogic>(this IServiceProvider provider)
             where TStartupLogic : IStartupServices
         {
-            var eventBus = provider.GetRequiredService<IEventBus>();
+            var subscriptionManager = provider.GetRequiredService<ISubscriptionManager>();
+
+            var typeSubscriptionManager = subscriptionManager.GetType();
+
+            var methodAddSubscription = typeSubscriptionManager.GetMethods().FirstOrDefault(x => x.Name.Contains("AddSubscription"));
+
+            var eventBus = provider.GetRequiredService<IEventBus>();            
 
             var typeEventBus = eventBus.GetType();
 
@@ -97,6 +103,10 @@ namespace CodeDesignPlus.Event.Bus.Extensions
 
                     if (!member.IsGenericParameter)
                     {
+                        var methodAdd = methodAddSubscription.MakeGenericMethod(member, eventHandler);
+
+                        methodAdd.Invoke(subscriptionManager, null);
+
                         var methodSuscribe = typeEventBus.GetMethods().FirstOrDefault(x => x.Name == nameof(IEventBus.SubscribeAsync) && x.IsGenericMethod);
 
                         var methodGeneric = methodSuscribe.MakeGenericMethod(member, eventHandler);
